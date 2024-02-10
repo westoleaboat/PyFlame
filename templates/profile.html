@@ -1,0 +1,11 @@
+<html>
+    <body>
+        <p>
+            Hello {{ user.username }}, 
+            your email is {{ user.email }}. 
+        </p>
+        <p>
+            <a href="{% url 'logout' %}">Logout</a> 
+        </p>
+    </body>
+</html>
