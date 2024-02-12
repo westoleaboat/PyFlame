@@ -100,7 +100,7 @@ WSGI_APPLICATION = 'flame.wsgi.application'
 DATABASES = {
     'default': dj_database_url.config(
         # Feel free to alter this value to suit your needs.
-        default=os.environ.get('DATABASE_URL') or 'postgresql://hvqadaxv:OGRv7dyYAkiTUIWdkETIMKyBWm9RcP3f@silly.db.elephantsql.com/hvqadaxv',
+        default=os.environ.get('DATABASE_URL'),
         conn_max_age=600
     ),
 
