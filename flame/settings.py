@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_registration',
     'pyflame',
+    'profile_info',
     'oauth2_provider',
 ]
 
