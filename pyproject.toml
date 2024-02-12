@@ -16,6 +16,7 @@ django-registration = "^3.4"
 psycopg2 = "^2.9.9"
 oauth2-provider = "^0.0"
 django-oauth-toolkit = "^2.3.0"
+python-dotenv = "^1.0.1"
 
 
 [build-system]

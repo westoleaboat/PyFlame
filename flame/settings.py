@@ -15,10 +15,14 @@ import os
 import dj_database_url
 import urllib.parse as up
 import psycopg2
+from dotenv import load_dotenv
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Load environment variables from .env file
+load_dotenv()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -97,19 +101,39 @@ WSGI_APPLICATION = 'flame.wsgi.application'
 # }
 
 
+# Check if running in development mode
+IS_DEVELOPMENT = os.getenv('DEVELOPMENT', default='False').lower() == 'true'
 
-DATABASES = {
-    'default': dj_database_url.config(
-        # Feel free to alter this value to suit your needs.
-        default=os.environ.get('DATABASE_URL'),
-        conn_max_age=600
-    ),
-
-    'development': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'development.db.sqlite3',
+# Database configuration
+if IS_DEVELOPMENT:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'development.db.sqlite3',
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': dj_database_url.config(
+            # Feel free to alter this value to suit your needs.
+            default=os.environ.get('DATABASE_URL'),
+            conn_max_age=600
+        )
+    }
+
+
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         # Feel free to alter this value to suit your needs.
+#         default=os.environ.get('DATABASE_URL'),
+#         conn_max_age=600
+#     ),
+
+#     'development': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'development.db.sqlite3',
+#     }
+# }
 
 
 # Password validation
