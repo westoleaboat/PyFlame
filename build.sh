@@ -12,5 +12,3 @@ python manage.py migrate
 # here you would call to create superuser
 # under /management/commands/create_initial_superuser.py
 # python manage.py create_initial_superuser.py
-# Create initial superuser using the management command
-python manage.py create_initial_superuser
