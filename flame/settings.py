@@ -53,19 +53,25 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_registration',
     'pyflame',
-    'profile_info',
+    # 'profile_info',
     'oauth2_provider',
+    'chat',
+    'channels',
+    'blog.apps.BlogConfig',
+    'taggit',
+    'markdownx',
+
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'oauth2_provider.middleware.OAuth2TokenMiddleware',
 ]
 
@@ -184,6 +190,21 @@ USE_I18N = True
 USE_TZ = True
 
 
+# markdown config
+MARKDOWNX_IMAGE_MAX_SIZE = {
+    'size': (500, 500),
+    'quality': 90
+}
+
+MARKDOWNX_MARKDOWN_EXTENSIONS = [
+    # 'markdown.extensions.extra',
+    'fenced_code', 
+    'codehilite', 
+    'tables',
+
+]
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
@@ -211,3 +232,6 @@ if DEBUG:
 
 ACCOUNT_ACTIVATION_DAYS = 3
 LOGOUT_REDIRECT_URL = '/accounts/login/'
+
+
+ASGI_APPLICATION = 'flame.routing.application'

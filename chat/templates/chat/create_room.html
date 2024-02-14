@@ -1,0 +1,8 @@
+create room
+
+<form method="post" action="{% url 'chat:create_room' %}">
+    {% csrf_token %}
+    <label for="room_name">Room Name:</label>
+    <input type="text" id="room_name" name="room_name" required>
+    <button type="submit">Create Room</button>
+</form>

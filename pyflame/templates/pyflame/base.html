@@ -1,0 +1,29 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>{% block title %}{% endblock %}</title>
+    <link href="{% static "css/blog.css" %}" rel="stylesheet">
+
+</head>
+<body>
+    <h1>PyFLame base</h1>
+    
+    {% if user.is_authenticated %}
+    <p>Hello, {{ user.username }}!</p>
+    <a href="{% url 'logout' %}">Logout</a> 
+
+    {% else %}
+        <p>
+            <a href="{% url 'login' %}">Login</a> 
+        </p>
+    {% endif %}
+
+    <div id="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+</body>
+</html>

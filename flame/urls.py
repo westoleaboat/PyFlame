@@ -19,9 +19,15 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/', include('django_registration.backends.activation.urls')),
+    path('accounts/', include('django_registration.backends.one_step.urls')),
     path('', include('pyflame.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/', include('profile_info.urls')),
     path('o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
+
+    path('chat/', include('chat.urls', namespace='chat')),
+    path('blog/', include('blog.urls', namespace='blog')),
+
+    path('markdownx/', include('markdownx.urls')),
+
 ]

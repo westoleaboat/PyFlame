@@ -1,0 +1,15 @@
+<h1>All rooms</h1>
+
+{% if rooms %}
+    <ul>
+        {% for room in rooms %}
+            <li>{{ room.name }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No rooms have been created yet.</p>
+    {% comment %} <a href="{% url 'create_room' %}">Create a Room</a> {% endcomment %}
+    
+{% endif %}
+
+<a href="{% url 'chat:create_room' %}"">Create a room</a>
