@@ -1,22 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
-<p>
-    Hello {{ user.username }}, 
-    your email is {{ user.email }}. 
-</p>
+<div>
+    <p>
+        Hello {{ user.username }}, 
+        your email is {{ user.email }}. 
+    </p>
+</div>
+
 
 <p>Write a <a href="{% url 'blog:new_post' %}">New Post</a>.</p>
-
-{% comment %} <h1>Create a New Room</h1>
-<form method="post">
-    {% csrf_token %}
-    <label for="room_name">Room Name:</label>
-    <input type="text" id="room_name" name="room_name" required>
-    <button type="submit">Create Room</button>
-</form> {% endcomment %}
-
-
-
-
 {% endblock %}

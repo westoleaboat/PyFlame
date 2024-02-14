@@ -456,6 +456,17 @@ argon2 = ["argon2-cffi (>=19.1.0)"]
 bcrypt = ["bcrypt"]
 
 [[package]]
+name = "django-gravatar2"
+version = "1.4.4"
+description = "Essential Gravatar support for Django. Features helper methods, templatetags and a full test suite!"
+optional = false
+python-versions = "*"
+files = [
+    {file = "django-gravatar2-1.4.4.tar.gz", hash = "sha256:c813280967511ced93eea0359f60e5369c35b3311efe565c3e5d4ab35c10c9ee"},
+    {file = "django_gravatar2-1.4.4-py2.py3-none-any.whl", hash = "sha256:545a6c2c5c624c7635dec29c7bc0be1a2cb89c9b8821af8616ae9838827cc35b"},
+]
+
+[[package]]
 name = "django-markdown-deux"
 version = "1.0.6"
 description = "a Django app that provides template tags for using Markdown (using the python-markdown2 processor)"
@@ -1049,4 +1060,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8,<4.0"
-content-hash = "ffbf488df121ccf6a10c008dbd4e0598ed44ef1292711f3419300f7c9e60e821"
+content-hash = "9731ff4cb1675d31d049939def51d1071151bbc88fe908bd90dfd01651b407d3"

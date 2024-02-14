@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'taggit',
     'markdownx',
+    # 'django_gravatar',
 
 ]
 
