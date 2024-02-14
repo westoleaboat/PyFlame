@@ -184,3 +184,6 @@ data-markdown-init {
     max-height: 200px;
 }
 
+textarea#id_body.markdownx-editor {
+    max-height: 200px;
+}
