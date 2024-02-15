@@ -54,7 +54,7 @@ def post_list(request, tag_slug=None):
     # plot_html = plot(fig2, output_type='div')
     
     # submission_dicts = hn_articles()
-    
+    total_posts = object_list.count()
     try:
         posts = paginator.page(page)
     except PageNotAnInteger:
@@ -64,7 +64,13 @@ def post_list(request, tag_slug=None):
         # If page is out of range deliver last page of results
         posts = paginator.page(paginator.num_pages)
         # posts = Post.published.all()
-    return render(request, 'blog/post/list.html', {'page':page, 'posts': posts, 'tag': tag, 'tags':all_tags})#, 'plot_html': plot_html, 'submission_dicts': submission_dicts, 'tags': all_tags })
+    return render(request, 'blog/post/list.html', {
+        'page':page, 
+        'posts': posts, 
+        'tag': tag, 
+        'tags':all_tags,
+        'total_posts': total_posts
+        })#, 'plot_html': plot_html, 'submission_dicts': submission_dicts, 'tags': all_tags })
 
 
 @login_required

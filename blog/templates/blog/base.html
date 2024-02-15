@@ -11,18 +11,33 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 </head>
 <body>
-    <a href="{% url 'blog:post_list' %}"><h1>PyNoteBook</h1></a>
 
-    
-    <p>
+    <div class='user'>
+        {% if user.is_authenticated %}
+        <p>user: {{ user.username }}</p>
+        <p><a href="{% url 'logout' %}">Logout</a></p>
+        {% else %}
+            <p>
+                <a href="{% url 'login' %}">Login</a> 
+            </p>
+        {% endif %}
+
+    </div>
+
+    <p><a href="{% url 'index' %}">Go back home</a></p>
+    {% comment %} <p><a href="{% url 'blog:post_list' %}">Blog</a></p> {% endcomment %}
         {% comment %} <a href="{% url 'blog:new_post' %}">Create a New Post</a> {% endcomment %}
-    </p>
-   
-
     <div id="content">
         {% block content %}
         {% endblock %}
     </div>
+    <footer>
+        {% if total_posts %}
+        <p>total posts in database: {{ total_posts }}</p>
+        {% else %}
+        {{ empty }}
+        {% endif %}
+    </footer>
 </body>
 </html>
 

@@ -8,22 +8,33 @@
 
 </head>
 <body>
-    <h1>PyFLame base</h1>
-    
-    {% if user.is_authenticated %}
-    <p>Hello, {{ user.username }}!</p>
-    <a href="{% url 'logout' %}">Logout</a> 
+    <header>
+        <div>
+            <h1>PyFlame</h1>
+        </div>    
+        <div class='user'>
+            {% if user.is_authenticated %}
+            <p>Hello, {{ user.username }}!</p>
+            <p><a href="{% url 'logout' %}">Logout</a></p>
+            {% else %}
+                <p>
+                    <a href="{% url 'login' %}">Login</a> 
+                </p>
+            {% endif %}
+        </div>
 
-    {% else %}
-        <p>
-            <a href="{% url 'login' %}">Login</a> 
-        </p>
-    {% endif %}
+        <p><a href="{% url 'blog:post_list' %}">blog</a></p>
+    </header>
+    
 
     <div id="content">
         {% block content %}
         {% endblock %}
     </div>
 
+
+    <footer>
+        <p>users count: {{ user_count }}</p>
+    </footer>
 </body>
 </html>
