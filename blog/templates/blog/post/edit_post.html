@@ -5,10 +5,21 @@
 
 {% block content %}
   <h2>Edit Post</h2>
+  <div class='new-post-form'>
+
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Update Post</button>
   </form>
+
+  <div class='new-post-preview'>
+    {{ form.media}}
+  </div>
+  
   <a href="{% url 'blog:post_detail' year=post.publish.year month=post.publish.month day=post.publish.day post=post.slug %}">Cancel</a>
+</div>
+
+
+  
 {% endblock %}
