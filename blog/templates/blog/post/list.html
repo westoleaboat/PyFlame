@@ -1,49 +1,84 @@
 {% extends "blog/base.html" %}
 {% load static %}
-
 {% load blog_tags %}
 
 
 {% block title %}All Posts{% endblock %}
 
-
-
 {% block content %}
-<p>Write a <a href="{% url 'blog:new_post' %}">new post</a></p>
+<div class="body-container">
 
-<h1>Latest Posts</h1>
+    <p>Write a <a href="{% url 'blog:new_post' %}">new post</a></p>
 
-
-{% if tag %}
-<h2> Posts tagged with "{{ tag.name }}"<h2>
-{% endif %}
+    <h1>Latest Posts</h1>
 
 
-<div id="posts">
-{% for post in posts %}
-<div id="single-post">
-
-    <h2>{{ forloop.counter }}. <a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
-    {% if post.tags.all %}
-        <p class="tags">Tags: 
-        {% for tag in post.tags.all %}
-            <a href="{% url "blog:post_list_by_tag" tag.slug %}">{{ tag.name }}</a>
-            {% if not forloop.last %}, {% endif %}
-        {% endfor %}
-        </p>
+    {% if tag %}
+    <h2> Posts tagged with "{{ tag.name }}"<h2>
     {% endif %}
 
-    <p class="date">Published {{ post.publish }} by {{ post.author }}</p>
 
-    {{ post.body|markdownx|truncatewords_html:30 }}
+    <section id='posts-grid' class='post-grid'>
+        {% for post in posts %}
+            <div class="single-post {% if forloop.first %}large{% endif %}">
+
+                <div id='short-text'>    
+                    <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+                    
+
+                    {% if forloop.first %}
+                    <div>
+                        {{ post.body|markdownx|truncatewords_html:30 }}
+                    </div>
+                    {% endif %}
+
+
+                    {% if post.tags.all %}
+
+                        <p class="tags"> 
+                        {% for tag in post.tags.all %}
+                            <a href="{% url "blog:post_list_by_tag" tag.slug %}">{{ tag.name }}</a>
+                            {% if not forloop.last %} {% endif %}
+                        {% endfor %}
+                        </p>
+                    {% endif %}
+                    
+                    <!-- p class="date">Published {{ post.publish }} by {{ post.author }}</p>
+
+                    {{ post.body|markdownx|truncatewords_html:30 }} -->
+                </div>
+                
+            </div>
+        {% endfor %}
+        
+        
+        {% comment %} <div id="posts">
+        {% for post in posts %}
+        <div id="single-post">
+
+            <h2>{{ forloop.counter }}. <a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+            {% if post.tags.all %}
+                <p class="tags">Tags: 
+                {% for tag in post.tags.all %}
+                    <a href="{% url "blog:post_list_by_tag" tag.slug %}">{{ tag.name }}</a>
+                    {% if not forloop.last %}, {% endif %}
+                {% endfor %}
+                </p>
+            {% endif %}
+
+            <p class="date">Published {{ post.publish }} by {{ post.author }}</p>
+
+            {{ post.body|markdownx|truncatewords_html:30 }}
+        </div>
+        {% endfor %}
+        </div> {% endcomment %}
+        
+
+    </section>
+    <div>
+        {% include "pagination.html" with page=posts %}
+    </div>
+        
 </div>
-{% endfor %}
-</div>
-{% include "pagination.html" with page=posts %}
-
-
-
-    
-
 {% endblock %}
 
