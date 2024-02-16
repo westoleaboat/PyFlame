@@ -201,3 +201,100 @@ textarea#id_body.markdownx-editor {
 footer {
     flex-shrink: 0;
 }
+
+form#login-form {
+    padding: 1rem;
+    /* font-size: 60px; */
+    /* border: 1px solid red; */
+
+}
+
+@media screen and (max-width: 767px) {
+    #content {
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        text-align: justify;
+        font-size: 20px;
+    }
+    #options {
+        padding: 2rem;
+        display: flex;
+        gap: 2rem;
+        flex-direction: column;
+    }
+
+    #options ul a {
+        text-decoration: none;
+        color: inherit;
+    }
+    
+    #options ul{
+        padding: 0;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    #options li {
+        font-size: 20px;
+        gap: 1rem;
+        padding: 1rem;
+        background-color: #9cbfde;
+    }
+    
+    form#login-form {
+        /* border: 1px solid green; */
+        width: 90%;
+        font-size: 30px;
+        background-color: #9cbfde;
+        
+    }
+
+    form#login-form p {
+        display: flex;
+        flex-direction: column;
+    }
+
+    form#login-form input {
+        display: flex;
+        padding: 0.5rem;
+
+    }
+
+    form#login-form button {
+        display: flex;
+        padding: 0.5rem 1rem;
+        width: 100%;
+        justify-content: center;
+        font-size: 20px;
+    }
+
+    .markdownx {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    form#new-post {
+        padding: 1rem;
+        background-color: #9cbfde;
+        font-size: 20px;
+    }
+    form#new-post button {
+        display: flex;
+        padding: 0.5rem 1rem;
+        width: 100%;
+        justify-content: center;
+        font-size: 20px;
+    }
+
+    .markdownx .markdownx-preview {
+        font-size: 15px;
+    }
+    span.helptext {
+        font-size: 13px;
+    }
+    
+}
+

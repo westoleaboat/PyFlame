@@ -1,11 +1,26 @@
 {% extends "base.html" %}
 
+
+
 {% block content %}
-<div>
-    <p>
-        Hello {{ user.username }}, 
-        your email is {{ user.email }}. 
-    </p>
+
+
+
+<div class='user'>
+    {% if user.is_authenticated %}
+    <div>
+        <p>
+            Hello {{ user.username }}!, 
+            your email is {{ user.email }}. 
+        </p>
+    </div><br>
+    <p><a href="{% url 'logout' %}">Logout</a></p>
+    {% else %}
+        <p>
+            <a href="{% url 'login' %}">Login</a> 
+        </p>
+    {% endif %}
+
 </div>
 
 
