@@ -3,10 +3,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-    <title>{% block title %}{% endblock %}</title>
-    <link href="{% static "css/blog.css" %}" rel="stylesheet">
+        <title>{% block title %}{% endblock %}</title>
+        {% comment %} <link href="{% static "css/blog.css" %}" rel="stylesheet"> {% endcomment %}
+        <link href="{% static "css/blog.css" %}" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-</head>
+
+    </head>
 <body>
     <header>
         <div>
@@ -17,9 +20,7 @@
             <p>Hello, {{ user.username }}!</p>
             <p><a href="{% url 'logout' %}">Logout</a></p>
             {% else %}
-                <p>
-                    <a href="{% url 'login' %}">Login</a> 
-                </p>
+                <p>Please <a href="{% url 'login' %}">Login</a></p>
             {% endif %}
         </div>
 
@@ -39,13 +40,13 @@
         
         <!-- Sine Wave -->
         <section class="sine-wave">
-            <div class="horizontal-range">
-                <label for="waveFrequencyInput">Wave Frequency:</label>
-                <input type="range" id="waveFrequencyInput" min="0.01" max="0.1" step="0.01" value="0.02">
-                <span id="waveFrequencyValue">0.02</span>
-            </div>
             <div class="sine-wave__swhero">
                 <canvas id="graphCanvas" class="custom-canvas"></canvas>
+                <div class="horizontal-range">
+                    <label for="waveFrequencyInput">Wave Frequency:</label>
+                    <input type="range" id="waveFrequencyInput" min="0.01" max="0.1" step="0.01" value="0.02">
+                    <span id="waveFrequencyValue">0.02</span>
+                </div>
                 <div class="vertical-range">
                     <label for="waveAmplitudeInput">Wave Amplitude:</label>
                     <input type="range" class="vertical-input" id="waveAmplitudeInput" min="10" max="70" step="10" value="70">
@@ -55,11 +56,18 @@
         </section>
         
     </div>
-    {% comment %} <canvas id="graphCanvas" width="600" height="200"></canvas> {% endcomment %}
 
 
     <footer>
+        <div>
         <p>users count: {{ user_count }}</p>
+
+        {% if user.is_authenticated %}
+            <p><a href="{% url 'logout' %}">Logout</a></p>
+            {% else %}
+                <p><a href="{% url 'login' %}">Login</a></p>
+        {% endif %}
+        </div>
     </footer>
     <script src="{% static 'js/sine-wave.js' %}"></script>
 
