@@ -1,9 +1,8 @@
-{% extends "base.html" %}
+{% extends "pyflame/base.html" %}
 
 
 
 {% block content %}
-
 
 
 <div class='user'>
@@ -24,5 +23,5 @@
 </div>
 
 
-<p>Write a <a href="{% url 'blog:new_post' %}">New Post</a>.</p>
+<p id='np'><a href="{% url 'blog:new_post' %}">Write a New Post</a>.</p>
 {% endblock %}

@@ -4,7 +4,6 @@
 <html>
     <head>
         <title>{% block title %}{% endblock %}</title>
-        {% comment %} <link href="{% static "css/blog.css" %}" rel="stylesheet"> {% endcomment %}
         <link href="{% static "css/blog.css" %}" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -12,34 +11,45 @@
     </head>
 <body>
     <header>
-        <div>
-            <h1>PyFlame</h1>
-        </div>    
+
+        <h1>PyFlame</h1>
+
+        
+        
         <div class='user'>
+            <a href="{% url 'index' %}">Home</a> 
+
             {% if user.is_authenticated %}
-            <p>Hello, {{ user.username }}!</p>
+            <p>Hello, <a href="/accounts/profile">{{ user.username }}</a>!</p>
             <p><a href="{% url 'logout' %}">Logout</a></p>
             {% else %}
                 <p>Please <a href="{% url 'login' %}">Login</a></p>
             {% endif %}
         </div>
 
-        <div id='options'>
-            <ul>
-                <a href="{% url 'blog:post_list' %}"><li>Add posts in our blog</li></a>
-                <a href='https://mindscape-chronicles.netlify.app/' target="_blank"><li>Visit Mindscape Chronicles</li></a>
-            </ul>
-        </div>
 
+        
     </header>
+
+
     
 
     <div id="content">
+
+        <!-- <div id='options'>
+            <ul>
+                <a href="{% url 'blog:post_list' %}"><li>Add posts in our blog</li></a>
+                <a href='https://mindscape-chronicles.netlify.app/' target="_blank"><li>Visit Mindscape Chronicles</li></a>
+                <a href='https://python-depository.netlify.app/' target="_blank"><li>Visit the Python Depository</li></a>
+            </ul>
+        </div> -->
+        
+        
         {% block content %}
         {% endblock %}
         
         <!-- Sine Wave -->
-        <section class="sine-wave">
+        <!-- <section class="sine-wave">
             <div class="sine-wave__swhero">
                 <canvas id="graphCanvas" class="custom-canvas"></canvas>
                 <div class="horizontal-range">
@@ -53,22 +63,33 @@
                     <span id="waveAmplitudeValue">70</span>
                 </div>
             </div>
-        </section>
+        </section> -->
         
     </div>
 
 
     <footer>
         <div>
-        <p>users count: {{ user_count }}</p>
-
-        {% if user.is_authenticated %}
-            <p><a href="{% url 'logout' %}">Logout</a></p>
+            {% if user_count %}
+            <p>users count: {{ user_count }}</p>
             {% else %}
-                <p><a href="{% url 'login' %}">Login</a></p>
-        {% endif %}
+            {{ empty }}
+            {% endif %}
+            {% if total_posts %}
+            <p>total posts in database: {{ total_posts }}</p>
+            {% else %}
+            {{ empty }}
+            {% endif %}
+        </div>
+        <div>
+            {% if user.is_authenticated %}
+                <p><a href="{% url 'logout' %}">Logout</a></p>
+                {% else %}
+                    <p><a href="{% url 'login' %}">Login</a></p>
+            {% endif %}
         </div>
     </footer>
+
     <script src="{% static 'js/sine-wave.js' %}"></script>
 
 </body>
