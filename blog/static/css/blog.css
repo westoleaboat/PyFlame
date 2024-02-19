@@ -71,7 +71,7 @@ section {
 .post-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 3rem;
+    grid-gap: 1rem;
 }
 
 .post-grid > .single-post > h2 > a {
@@ -84,14 +84,15 @@ section {
 .post-grid > .single-post > #short-text > h2 > a {
     text-decoration: none;
     color: white;
-    font-size: 40px;
+    font-size: 30px;
+
 }
 
 .post-grid > .single-post > #short-text > p.tags > a{
     text-decoration: none;
     background-color: purple;
     color: white;
-    padding: 0.5rem;
+    /* padding: 0.5rem; */
     border-radius: 5px;
     /* border: 1px solid green; */
     /* bottom: 0; */
@@ -114,12 +115,13 @@ section {
 #short-text {
     background-color: rgba(0, 0, 0, 0.7);;
     position: relative;
-
+    justify-content: space-evenly;
     flex: 2;
     /* position: inherit; */
     bottom: 0;
     display: flex;
     flex-direction: column;
+    padding: 1rem;
     
 }
 
@@ -144,6 +146,8 @@ section {
     display: flex;
     flex-direction: column;
     background-image: url('../img/placeholder1.png');
+    border-radius: 10px;
+    overflow: hidden;
 
 
 }   
@@ -210,14 +214,21 @@ section {
     /* margin: 0 auto; */
     /* display: flex; */
     flex-direction: column;
+    width: 90%;
 }
 
 #content h1 {
     padding: 2rem 0rem 1rem 0rem;
+    display: flex;
+    justify-content: center;
+    font-size: 60px;
 }
 
 #content h2 {
-    padding-top: 2rem;
+    /* padding-top: 2rem; */
+    /* padding: 1rem 1rem 0rem 1rem; */
+    /* padding: 2rem; */
+
 }
 
 #content #post-detail {
@@ -444,8 +455,11 @@ form#login-form {
 @media screen and (max-width: 767px) {
 
     body {
-        max-width: 600px;
-        margin: 0 auto;
+        /* max-width: 600px;
+        margin: 0 auto; */
+    }
+    header {
+        /* width: 100%; */
     }
 
     header h1{
@@ -472,6 +486,8 @@ form#login-form {
         font-size: 20px;
         margin: 0 auto;
         padding: 1rem;
+        width: 90%;
+        margin: 0 auto; 
     }
 
     #content p.date {
@@ -482,8 +498,12 @@ form#login-form {
     #content h1 {
         text-align: center;
         padding-bottom: 1rem;
+        font-size: 40px;
     }
 
+    #content#post-detail {
+        width: 90%;
+    }
 
     canvas#graphCanvas.custom-canvas {
         width: 100%;
@@ -637,6 +657,16 @@ form#login-form {
         font-size: 14px;
         margin: 0 auto;
 
+    }
+
+    .post-grid > .single-post > #short-text > p.tags > a {
+        font-size: 14px;
+    }
+
+
+    #short-text > div {
+        /* color: white; */
+        display: none;
     }
     
     footer {
