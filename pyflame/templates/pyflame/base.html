@@ -6,7 +6,10 @@
         <title>{% block title %}{% endblock %}</title>
         <link href="{% static "css/blog.css" %}" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+        
+        <!-- Include highlight.js from a CDN -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
 
     </head>
 <body>
@@ -89,6 +92,14 @@
             {% endif %}
         </div>
     </footer>
+
+    <!-- First script to highlight code using highlight.js -->
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            hljs.highlightAll();
+        });
+    </script>
+    
 
     <script src="{% static 'js/sine-wave.js' %}"></script>
 
