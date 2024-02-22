@@ -14,6 +14,8 @@ from django.contrib.auth.decorators import login_required
 
 from django_gravatar.helpers import get_gravatar_url, has_gravatar, get_gravatar_profile_url, calculate_gravatar_hash
 # from django.contrib.auth.models import User
+from django.contrib import messages
+
 
 # Create your views here.
 

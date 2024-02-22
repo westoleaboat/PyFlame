@@ -17,13 +17,13 @@
 
         <h1>PyFlame</h1>
 
-        
+       
         
         <div class='user'>
-            <a href="{% url 'index' %}">Home</a> 
+            <p><a href="{% url 'index' %}">Home</a></p> 
 
             {% if user.is_authenticated %}
-            <p>Hello, <a href="/accounts/profile">{{ user.username }}</a>!</p>
+            <p><a href="/accounts/profile">Profile</a></p>
             <p><a href="{% url 'logout' %}">Logout</a></p>
             {% else %}
                 <p>Please <a href="{% url 'login' %}">Login</a></p>
@@ -34,10 +34,21 @@
         
     </header>
 
-
+   
     
 
     <div id="content">
+
+        {% if messages %}
+        <ul class="messages">
+        {% for message in messages %}
+        <li class="{{ message.tags }}">
+        {{ message|safe }}
+        <a href="#" class="close">x</a>
+        </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
 
         <!-- <div id='options'>
             <ul>
@@ -99,7 +110,16 @@
             hljs.highlightAll();
         });
     </script>
-    
+
+    <!-- jQuery and script for closing messages -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".messages .close").click(function(){
+                $(this).parent().fadeOut();
+            });
+          });
+    </script>
 
     <script src="{% static 'js/sine-wave.js' %}"></script>
 

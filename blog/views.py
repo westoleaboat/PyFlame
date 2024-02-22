@@ -17,6 +17,7 @@ from django.utils.text import slugify
 from django.utils import timezone
 
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from django.http import Http404
 
 # Create your views here.
@@ -121,6 +122,7 @@ def new_post(request):
 
             post.save()
 
+            
 
              # Process and set tags for the post
             tags_input = form.cleaned_data['tags']
@@ -131,11 +133,17 @@ def new_post(request):
             tags_list = [tag.strip() for tag in tags_input.split(',')]
             post.tags.set(tags_list)
 
+            if post.status == 'draft':
+                messages.success(request, 'Message saved as DRAFT')
+                return redirect('blog:post_list')
+
+            else:
+                messages.success(request, 'Message saved')
             
-            # Use reverse to get the URL for the post_detail view
-            url = reverse('blog:post_detail', kwargs={'year': post.publish.year, 'month': post.publish.month, 'day': post.publish.day, 'post': post.slug})
-            return redirect(url)
-            # return redirect('blog:post_detail', slug=post.slug)  # Replace 'post_detail' with your actual URL pattern name.
+                # Use reverse to get the URL for the post_detail view
+                url = reverse('blog:post_detail', kwargs={'year': post.publish.year, 'month': post.publish.month, 'day': post.publish.day, 'post': post.slug})
+                return redirect(url)
+                # return redirect('blog:post_detail', slug=post.slug)  # Replace 'post_detail' with your actual URL pattern name.
     else:
         # blank form
         form = PostForm()
