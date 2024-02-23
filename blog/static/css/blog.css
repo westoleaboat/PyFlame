@@ -68,7 +68,7 @@ header h1 {
 }
 
 section {
-    padding: 2rem 0;
+    padding: 1rem;
 }
 
 /* Add this to your CSS file */
@@ -251,7 +251,8 @@ section {
 
 #content #post-detail #post-bottom {
     background-color: ghostwhite;
-    padding: 2rem 1rem;
+    /* padding: 2rem 1rem; */
+    padding: 1rem;
     margin-top: 2rem;
 }
 
@@ -434,8 +435,12 @@ tr:hover {
 }
 
 textarea#id_body.markdownx-editor {
-    max-height: 200px;
+    max-height: 400px;
     min-width: 50%;
+}
+
+form#comment-form {
+    padding: 1rem;
 }
 
 .user {
@@ -492,6 +497,18 @@ ul.messages li a.close {
     text-shadow:none;
 }
 
+/* comments */
+.comment {
+    padding:10px;
+}
+.comment:nth-child(even) {
+    background:#efefef;
+}
+.comment .info {
+    font-weight:bold;
+    font-size:12px;
+    color:#666;
+}
 
 
 footer {

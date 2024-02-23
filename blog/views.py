@@ -1,8 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Post
+from .models import Post, Comment
 
 from django.views.generic import ListView
-
 # pagination
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
@@ -10,7 +9,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from taggit.models import Tag
 from django.db.models import Count
 
-from .forms import PostForm
+from .forms import PostForm, CommentForm
 # from django.contrib.auth.models import User
 from django.urls import reverse
 from django.utils.text import slugify
@@ -88,12 +87,39 @@ def post_detail(request, year, month, day, post):
     # Make sure the topic belongs to the current user.
     # if post.author != request.user:
     #     raise Http404
+
+    # List of active comments for this post
+    comments = post.comments.filter(active=True)
+    new_comment = None
+    if request.method == 'POST':
+        # A comment was posted
+        comment_form = CommentForm(data=request.POST)
+        if comment_form.is_valid():
+            # Create comment but dont save
+            new_comment = comment_form.save(commit=False)
+            # Assign the current post to comment
+            new_comment.post = post
+            # Save to db
+            new_comment.save()
+    else:
+        comment_form = CommentForm()
+
                                     
     # List of similar posts
     post_tags_ids = post.tags.values_list('id', flat=True)
     similar_posts = Post.published.filter(tags__in=post_tags_ids).exclude(id=post.id)
     similar_posts = similar_posts.annotate(same_tags=Count('tags')).order_by('-same_tags', '-publish')[:4]
-    return render(request, 'blog/post/detail.html', {'post': post, 'similar_posts':similar_posts})
+
+    # return context
+    context = {
+        'post': post, 
+        'similar_posts':similar_posts,
+        'comments': comments,
+        'new_comment': new_comment,
+        'comment_form': comment_form
+    }
+    
+    return render(request, 'blog/post/detail.html', context)
 
 
 
