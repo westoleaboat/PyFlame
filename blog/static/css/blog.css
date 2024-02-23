@@ -55,6 +55,8 @@ header h1 {
     color: black;
     background-color: lightgray;
     padding: 1rem;
+    border-radius: 5px;
+
 
 
 
@@ -66,6 +68,24 @@ header h1 {
     max-width: 1400px;
     width: 90%;
 }
+
+.body-container .nav-options {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem 0rem 0rem 1rem;
+}
+
+.body-container .nav-options a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.body-container .nav-options a:hover {
+    background-color: orange;
+    color: white;
+    transition: 0.2s ease-out;
+}
+
 
 section {
     padding: 1rem;
@@ -152,9 +172,14 @@ section {
     background-image: url('../img/placeholder1.png');
     border-radius: 10px;
     overflow: hidden;
+    transition: transform 0.3s ease; /* Add smooth transition for transform property */
+
 
 
 }   
+.single-post:hover {
+    transform: translateY(-8px); /* Move the card 5 pixels up when hovering */
+}
 
 #single-post > p.tags > a {
     text-decoration: none;
@@ -222,7 +247,7 @@ section {
 }
 
 #content h1 {
-    padding: 2rem 0rem 1rem 0rem;
+    padding: 2rem 0rem 2rem 0rem;
     display: flex;
     justify-content: center;
     font-size: 60px;
@@ -260,13 +285,17 @@ section {
 #content #options {
     /* border: 1px solid red; */
     padding: 2rem 0rem;
+    /* border-radius: 5px; */
+
 
 }
 
 #content .body-container p#np {
     width: fit-content;
-    background-color: lightgray;
-    padding: 1rem;
+    /* background-color: lightgray; */
+    padding: 0.5rem;
+    border-radius: 5px;
+    
 }
 
 #content p.tags {
@@ -277,11 +306,11 @@ section {
     gap: 0.2rem;
 
 }
-#content p#np {
+/* #content p#np {
     width: fit-content;
     background-color: lightgray;
-    padding: 1rem;
-}
+    padding: 0.5rem;
+} */
 
 #content p a {
     text-decoration: none;
@@ -566,6 +595,11 @@ form#login-form {
     .body-container {
         /* border: 2px solid green; */
         width: 100%;
+    }
+
+    .body-container .nav-options {
+        padding: 0;
+        justify-content: center;
     }
     
     #content {

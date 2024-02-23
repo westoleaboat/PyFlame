@@ -8,9 +8,11 @@
 {% block content %}
 <div class="body-container">
     
-    <p id='np'><a href="{% url 'blog:post_list' %}">< Blog</a></p>
+    <div class='nav-options'>
+        <a href="{% url 'blog:post_list' %}"><p id='np'>< Blog</p></a>
 
-    <p id="np">Add a <a href="{% url 'blog:new_post' %}">new post ></a></p>
+        <a href="{% url 'blog:new_post' %}"><p id="np">Add a new post ></p></a>
+    </div>
 
     <h1>Latest Posts</h1>
 

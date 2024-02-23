@@ -26,7 +26,7 @@ class PostListView(ListView):
     paginate_by = 6
     template_name = 'blog/post/list.html'
 
-@login_required
+# @login_required
 def post_list(request, tag_slug=None):
     object_list = Post.published.all()
     # object_list = Post.objects.filter(author=request.user).order_by('-created')
@@ -76,7 +76,7 @@ def post_list(request, tag_slug=None):
     return render(request, 'blog/post/list.html', context)#, 'plot_html': plot_html, 'submission_dicts': submission_dicts, 'tags': all_tags })
 
 
-@login_required
+# @login_required
 def post_detail(request, year, month, day, post):
     post = get_object_or_404(Post, slug=post,
                                     status='published',

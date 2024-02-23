@@ -15,6 +15,7 @@ from django.contrib.auth.decorators import login_required
 from django_gravatar.helpers import get_gravatar_url, has_gravatar, get_gravatar_profile_url, calculate_gravatar_hash
 # from django.contrib.auth.models import User
 from django.contrib import messages
+# from ..blog.models import Post
 
 
 # Create your views here.
@@ -29,7 +30,10 @@ class ProfileView(LoginRequiredMixin, View):
     the user’s profile information."""
 
     def get(self, request):
-        return render(request, 'profile.html')
+        # object_list = Post.objects.filter(author=request.user).order_by('-created')
+        # total_posts = object_list.count()
+
+        return render(request, 'profile.html')#, {'total_posts':total_posts})
 
 
 class EmailView(ProtectedResourceView):

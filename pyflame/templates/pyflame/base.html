@@ -18,7 +18,6 @@
 
         <h1>PyFlame</h1>
 
-       
         
         <div class='user'>
             <p><a href="{% url 'index' %}">Home</a></p> 
@@ -31,12 +30,9 @@
             {% endif %}
         </div>
 
-
-        
     </header>
 
    
-    
 
     <div id="content">
 
@@ -50,35 +46,12 @@
         {% endfor %}
         </ul>
         {% endif %}
-
-        <!-- <div id='options'>
-            <ul>
-                <a href="{% url 'blog:post_list' %}"><li>Add posts in our blog</li></a>
-                <a href='https://mindscape-chronicles.netlify.app/' target="_blank"><li>Visit Mindscape Chronicles</li></a>
-                <a href='https://python-depository.netlify.app/' target="_blank"><li>Visit the Python Depository</li></a>
-            </ul>
-        </div> -->
         
         
         {% block content %}
         {% endblock %}
-        
-        <!-- Sine Wave -->
-        <!-- <section class="sine-wave">
-            <div class="sine-wave__swhero">
-                <canvas id="graphCanvas" class="custom-canvas"></canvas>
-                <div class="horizontal-range">
-                    <label for="waveFrequencyInput">Wave Frequency:</label>
-                    <input type="range" id="waveFrequencyInput" min="0.01" max="0.1" step="0.01" value="0.02">
-                    <span id="waveFrequencyValue">0.02</span>
-                </div>
-                <div class="vertical-range">
-                    <label for="waveAmplitudeInput">Wave Amplitude:</label>
-                    <input type="range" class="vertical-input" id="waveAmplitudeInput" min="10" max="70" step="10" value="70">
-                    <span id="waveAmplitudeValue">70</span>
-                </div>
-            </div>
-        </section> -->
+    
+
         
     </div>
 
