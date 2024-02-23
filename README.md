@@ -26,3 +26,4 @@ $ DJANGO_DB_ALIAS=development poetry run ./manage.py runserver
 $ DJANGO_DB_ALIAS=development poetry run gunicorn --reload flame.wsgi --keyfile private_key.pem --certfile certificate.pem 
 ```
 
+![PyflameSC](https://github.com/westoleaboat/PyFlame/assets/68698872/30c8efd0-5467-461a-ae6f-ce8fb80dd478)
